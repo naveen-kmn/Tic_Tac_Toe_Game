@@ -20,24 +20,30 @@ public class TicTacToeGame
             makeChoice();
             showBoard();
             move();
+            move();
+
         }
         static void makeChoice()
         {
             Scanner choice = new Scanner(System.in);
-            System.out.println("Enter 1 for X and 2 for O");
+            System.out.println("Enter 1 for choosing X and 2 for choosing O");
             int i = choice.nextInt();
 
-            switch (i)
-            {
-                case 1:
+            switch (i) {
+                case (1) -> {
                     System.out.println("Player got  'X' character");
-                case 2:
+                    player1='X';
+                    player2='O';
+                }
+                case (2) -> {
                     System.out.println("Player got 'O' character");
+                    player1='O';
+                    player2='X';
+                }
             }
         }
         static void showBoard()
         {
-            int k=0;
             for (int i = 1; i < 4; i++)
             {
                 System.out.print("|");
@@ -58,15 +64,23 @@ public class TicTacToeGame
             System.out.println("|");
 
         }
-        static void move()
-        {
+        static void move() {
             System.out.println("Enter number between 1 to 9");
             Scanner m = new Scanner(System.in);
             int num = m.nextInt();
-            System.out.println("Player got the location on board = "+num);
-            board[num]=player1;
-            System.out.println(board[num]);
-            System.out.println(num);
-            showBoard();
+            System.out.println("Player got the location on board = " + num);
+            if (board[(num)] == 'X' | board[num] == 'O')
+            {
+                System.out.println("Space is not free");
+            }
+            else
+            {
+                System.out.println("Space is free");
+                //board[num] = (char) num;
+                board[num] = player1;
+                System.out.println(board[num]);
+                System.out.println(num);
+                showBoard();
+            }
         }
 }
